@@ -89,7 +89,7 @@ p {
 }
 
 /*================================ BODY ========================================*/
-body {
+.container {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -110,7 +110,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1200px;
+    max-width: 1200px;
     min-height: 110px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -121,7 +121,7 @@ header {
     max-height: 60px; /* Ajusta el tamaño del logo según sea necesario */
 }
 
-.nav-menu {
+.nav_menu {
     flex-grow: 1;
 }
 
@@ -186,51 +186,70 @@ header {
     fill: #FA3C45AB; /* Cambia esto al color que prefieras */
 }
 
-.icon_menu {
-    cursor: pointer;
+/*----------------------------- Menu Responsive---------------------------------------------*/
+.abrir-menu,
+.cerrar-menu {
     display: none;
 }
 
-.icon_menu img {
-    height: 30px;
-}
-
-@media (max-width: 803px) {
+@media screen and (max-width: 800px) {
     .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-menu {
-        display: none; /* Esconde el menú de navegación en dispositivos pequeños */
-    }
-
-    .icon_menu {
-        display: flex;
         align-items: center;
+        max-width: 80%;
+        gap: 3rem;
     }
 
-    #menu {
+    .abrir-menu,
+    .cerrar-menu {
+        display: block;
+        border: 0;
+        font-size: 3rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .abrir-menu {
+        color: #ececec;
+    }
+
+    .cerrar-menu {
+        color: #ececec;
+    }
+
+    .nav_menu {
+        opacity: 0;
+        visibility: hidden;
+        background-color: #1d3c78de;
         display: flex;
         flex-direction: column;
+        align-items: end;
+        gap: 4rem;
         position: absolute;
-        top: 110px; /* Ajusta según la altura del header */
-        left: 0;
-        width: 100%;
-        background-color: var(--gray-dark);
-        padding: 1em;
-        gap: 1em;
-        margin: 0;
-        transition: transform 0.3s ease;
-        transform: translateX(-100%); /* Esconde el menú inicialmente */
+        top: 110px;
+        right: 15px;
+        width: 50%;
+        height: 100vw;
+        padding: 2rem;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+        z-index: 1;
     }
 
-    .show_menu {
-        transform: translateX(0); /* Muestra el menú cuando se activa la clase */
+    .nav_menu.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: end;
     }
 
-    #menu a {
-        font-size: 1.5rem; /* Ajusta el tamaño del texto en el menú desplegable */
+    .nav-list li a {
+        color: #ecececec;
+    }
+
+    .social_media {
+        display: none;
     }
 }
 
