@@ -103,6 +103,7 @@ body {
 header {
     background-color: var(--primary-color);
     width: 100%;
+    position: relative; /* Necesario para posicionar el menú cuando esté abierto */
 }
 
 .header-container {
@@ -112,6 +113,8 @@ header {
     width: 1200px;
     min-height: 110px;
     margin: 0 auto;
+    padding: 0 1rem;
+    gap: 3rem;
 }
 
 .img_logo img {
@@ -127,33 +130,31 @@ header {
     justify-content: flex-end;
     gap: 3rem;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
-
-#menu a {
-    text-decoration: none;
-    color:var(--menu-text-color); /* Ajusta el color según tu diseño */
-    font-size: 2rem; /* Ajusta el tamaño de fuente según sea necesario */
-}
-
-#menu a:hover {
-    color:#FA3C45AB;
-}
-
-#menu a:active {
-    color:white;
-}
-
-FA3C45AB
 
 #menu li {
     margin: 0;
 }
 
+#menu a {
+    text-decoration: none;
+    color: var(--menu-text-color); /* Ajusta el color según tu diseño */
+    font-size: 2rem; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+#menu a:hover {
+    color: #FA3C45AB;
+}
+
+#menu a:active {
+    color: white;
+}
+
 .social_media {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 0 2rem 0 2rem;
     gap: 1rem;
 }
 
@@ -161,6 +162,8 @@ FA3C45AB
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 #social_media-menu a {
@@ -187,31 +190,47 @@ FA3C45AB
     cursor: pointer;
     display: none;
 }
+
 .icon_menu img {
     height: 30px;
-    margin-right: 10px;
 }
 
 @media (max-width: 803px) {
-    header nav ul {
-        background-color: var(--gray-dark);
-        position: absolute;
-        flex-direction:column;
-        align-items: center;
-        justify-content: center;
-        top: 50px;
-        width: 100%;
-        padding: 1em;
-        transition: margin-left 0.5s;
-        margin-left: 110%;
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .show_menu {
-        margin-left: 0;
+
+    .nav-menu {
+        display: none; /* Esconde el menú de navegación en dispositivos pequeños */
     }
-    .icon_menu-show {
+
+    .icon_menu {
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 110px; /* Ajusta según la altura del header */
+        left: 0;
         width: 100%;
+        background-color: var(--gray-dark);
+        padding: 1em;
+        gap: 1em;
+        margin: 0;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%); /* Esconde el menú inicialmente */
+    }
+
+    .show_menu {
+        transform: translateX(0); /* Muestra el menú cuando se activa la clase */
+    }
+
+    #menu a {
+        font-size: 1.5rem; /* Ajusta el tamaño del texto en el menú desplegable */
     }
 }
 
@@ -222,6 +241,9 @@ FA3C45AB
     width: 100vw;
     height: 100vh;
     background: url('../../assert/img/seven-suites-hotels.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
 }
 
 .hero-overlay {
@@ -240,9 +262,10 @@ FA3C45AB
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 90%; /* Ajusta el ancho para mayor flexibilidad */
     max-width: 1200px;
     color: white;
+    gap: 2rem; /* Añadido para mejorar el espaciado */
 }
 
 .hero-section {
@@ -250,8 +273,9 @@ FA3C45AB
     padding: 2rem;
 }
 
-.left-section {
-    text-align: left;
+.left-section img {
+    max-width: 100%;
+    height: auto; /* Asegura que la imagen se ajuste correctamente */
 }
 
 .right-section {
@@ -261,14 +285,53 @@ FA3C45AB
     gap: 2rem;
 }
 
+.right-section h1 {
+    font-size: 6.0rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.right-section p {
+    font-size: 2.0rem;
+}
+
+.form__button {
+    background-color: #F25050; /* Ajusta el color del botón según sea necesario */
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form__button a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.form__button a:hover {
+    color: #FA3C45; /* Ajusta el color del texto al pasar el ratón sobre el botón */
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column;
+        text-align: center; /* Centra el texto en dispositivos pequeños */
     }
 
     .left-section, .right-section {
-        text-align: center;
+        padding: 1rem;
+    }
+
+    .right-section h1 {
+        font-size: 4rem; /* Ajusta el tamaño de fuente en pantallas pequeñas */
+    }
+
+    .right-section p {
+        font-size: 1.5rem; /* Ajusta el tamaño de fuente en pantallas pequeñas */
     }
 }
 
@@ -285,14 +348,12 @@ main {
     font-size: 3rem;
     text-align: center;
     font-weight: 400;
-    font-style: italic;
     margin-bottom: 6rem;
 }
 
 /*================================ Beneficios ========================================*/
 .beneficios {
     padding: 8rem 2rem 11rem;
-    /* margin: 0 1rem 8rem 1rem */
 }
 
 /* < ---------- Cards Container ---------- > */
@@ -300,92 +361,96 @@ main {
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    width: 100%;
+    gap: 2rem; /* Aumentado el gap entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas en la pantalla */
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
 }
 
 /* < ---------- Card ---------- > */
 .card {
     background-color: white;
-    margin: auto;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    width: 320px;
     border-radius: 1rem;
-    box-shadow: 0 .1rem .7rem #0003;
+    box-shadow: 0 0.1rem 0.7rem rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: transform 200ms ease;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    overflow: hidden; /* Asegura que las imágenes no sobresalgan del borde */
+    max-width: 320px; /* Máximo ancho de la tarjeta */
+    width: 100%; /* Asegura que se ajuste al contenedor */
+    margin: auto; /* Centra cada tarjeta en su contenedor */
 }
 
 .card:hover {
     transform: scale(1.05);
-    transition: transform 200ms ease;
+    box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.4); /* Añadido efecto de sombra en hover */
 }
-  
+
 /* < ---------- Header Cards ---------- > */
 .card_header {
-    position: relative;
-    height: 22rem;
+    height: 180px; /* Ajustado el tamaño para un mejor diseño */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9; /* Fondo claro para la cabecera */
+}
+
+.card_img {
+    width: 50%;
+    height: auto; /* Mantiene la proporción de la imagen */
 }
 
 .card_content {
-    border: none;
-}
-  
-.card_img {
-    position: absolute;
-    width: 70%;
-    left: 50%;
     padding: 1.5rem;
-    transform: translateX(-50%);
+    text-align: center;
 }
 
 .card_name {
-    text-transform: capitalize;
-    color: var(--font-color);
+    color: #1D3C78; /* Ajusta el color según tu esquema de diseño */
     font-weight: 500;
-    font-size: 2.0rem;
-    margin-top: 4.5rem;
-    margin-left: 1rem;
+    font-size: 1.8rem; /* Ajustado para mejor legibilidad */
+    margin: 1rem 0;
 }
 
-.card_list{
-    display: flex;
-    justify-content: center;
-    color: var(--text-color);
-    font-weight: 300;
-    text-transform: capitalize;
-    font-size: 1.5rem;
-    gap: 2rem;
-  }
-    
-
 .card_footer {
-    margin: 1.5rem 0 2.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
+}
+
+.card_list {
+    color: #333; /* Ajusta el color del texto */
+    font-weight: 300;
+    font-size: 1.4rem; /* Ajustado para mejor legibilidad */
+    line-height: 1.6; /* Mejora la legibilidad del texto */
+    text-align: center; /* Centra el texto en la tarjeta */
 }
 
 /* < ---------- Media Cards Container ---------- > */
-@media only screen and (max-width: 720px) {  
+@media only screen and (max-width: 720px) {
     .beneficios {
-        background-color: black;
-        margin: auto;
+        padding: 4rem 1rem 6rem; /* Ajusta el padding en pantallas pequeñas */
     }
 
     .cards-container {
-        width: 100%;
-        height: 90%;
+        gap: 1.5rem; /* Ajustado el espacio entre tarjetas en pantallas pequeñas */
     }
 
     .card {
-        width: 352px;
+        max-width: 350px;
+        margin-top: 2rem; /* Reduce el margen en pantallas pequeñas */
+    }
+
+    .card_img {
+        width: 40%;
     }
 
     .card_header {
-        position: absolute;
-        background-color: red;
-        width: auto;
+        height: 150px; /* Ajustado el tamaño de la cabecera */
+    }
+
+    .card_name {
+        font-size: 1.6rem; /* Ajustado el tamaño de fuente para pantallas pequeñas */
+    }
+
+    .card_list {
+        font-size: 1.2rem; /* Ajustado el tamaño de fuente para pantallas pequeñas */
     }
 }
 
