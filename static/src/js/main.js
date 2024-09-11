@@ -2,15 +2,7 @@
 let project = "Start project Seven Suites";
 console.log(project);
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const iconMenu = document.getElementById('icon_burger');
-//     const navMenu = document.querySelector('.nav-menu');
-    
-//     iconMenu.addEventListener('click', function() {
-//         navMenu.classList.toggle('show_menu'); /* Alterna la clase 'show' para mostrar/ocultar el menú */
-//     });
-// });
-
+// Burger Menu...
 const nav_menu = document.querySelector("#nav_menu");
 const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
@@ -23,21 +15,19 @@ cerrar.addEventListener("click", () => {
     nav_menu.classList.remove("visible");
 })
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const iconMenu = document.getElementById('icon_burger');
-//     const navMenu = document.querySelector('.nav-menu');
-    
-//     iconMenu.addEventListener('click', function() {
-//         navMenu.classList.toggle('show'); /* Alterna la clase 'show' para mostrar/ocultar el menú */
-//     });
-// });
+// Email Services...
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-// // Seleccionar el ícono de la hamburguesa y el menú de navegación
-// const iconBurger = document.querySelector("#icon_burger");
-// const menu = document.querySelector("#menu");
+    const serviceID = 'service_6b9jmlg'; // Reemplaza TU_SERVICE_ID con el ID del servicio creado en EmailJS
+    const templateID = 'template_6ag40jq'; // Reemplaza TU_TEMPLATE_ID con el ID de la plantilla creada en EmailJS
 
-// // Añadir un evento de clic al ícono de la hamburguesa
-// iconBurger.addEventListener("click", () => {
-//     // Alternar la clase 'show_menu' en el menú de navegación para mostrar u ocultar
-//     menu.classList.toggle("show_menu");
-// });
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('formResponse').textContent = 'Mensaje enviado con éxito';
+        }, function(error) {
+            console.log('FAILED...', error);
+            document.getElementById('formResponse').textContent = 'Error al enviar el mensaje';
+        });
+});

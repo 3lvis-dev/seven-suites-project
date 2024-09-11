@@ -9,6 +9,12 @@
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="static/src/css/style.css">
     </head>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("__js5_ew-refw0cwk"); // Reemplaza TU_USER_ID con el User ID de EmailJS
+        })();
+    </script>
     <body>
         <div class="container">
 
@@ -251,7 +257,7 @@
                         </div>
                         <div class="right-section-contact">
                             
-                            <form>
+                            <form id="contactForm">
                                 <div class='form'>
                                   <h2 class='form__title'> 
                                     Conversemos
@@ -260,43 +266,45 @@
                                   <div class='form__grupo'>
                                     <!-- <i class='bx bxs-user'></i> -->
                                     <i class='bx bx-user'></i>
-                                    <input type="text" id='name' required /><span class='barra'></span>
-                                    <label>first name</label>
+                                    <input type="text" id='name' name='name' required /><span class='barra'></span>
+                                    <label>nombre...</label>
                                   </div>
                                     
                                   <div class='form__grupo'>
                                     <!-- <i class='bx bxs-user'></i> -->
                                     <i class='bx bx-user'></i>
-                                    <input type="text" id='lastname' required /><span class='barra'></span>
-                                    <label>last name</label>
+                                    <input type="text" id='lastname' name='lastname' required /><span class='barra'></span>
+                                    <label>apellido...</label>
                                   </div>
                           
                                   <div class='form__grupo'>
                                     <!-- <i class='bx bxs-envelope'></i> -->
                                     <i class='bx bx-envelope'></i>
-                                    <input type="email" id='mail' required /><span class='barra'></span>
-                                    <label htmlFor="mail">email</label>
+                                    <input type="email" id='mail' name='mail' required /><span class='barra'></span>
+                                    <label>email...</label>
                                   </div>
                           
                                   <div class='form__grupo'>
                                     <!-- <i class='bx bxs-lock-alt'></i> -->
                                     <i class='bx bxs-edit'></i>
-                                    <input type="asunto" id='pass' required /><span class='barra'></span>
-                                    <label>Asunto</label>
+                                    <input type="asunto" id='asunto' name='asunto' required /><span class='barra'></span>
+                                    <label>asunto...</label>
                                   </div>
                           
                                   <div class='form__grupo'>
                                     <!-- <i class='bx bxs-cake'></i> -->
                                     <i class='bx bx-cake'></i>
-                                    <input type="date" id='birth' required /><span class='barra'></span>
+                                    <input type="date" id='birth' name='birth' required /><span class='barra'></span>
                                     <label></label>
                                   </div>
                           
-                                  <button class="form__button">
+                                  <button type="submit" class="form__button">
                                     Enviar
                                   </button>
                                 </div>
                               </form>
+
+                              <div id="formResponse"></div>
     
                         </div>
                     </div>
