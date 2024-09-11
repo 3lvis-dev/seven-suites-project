@@ -90,12 +90,8 @@ p {
 
 /*================================ BODY ========================================*/
 .container {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: auto;
-    overflow-x: hidden; /* Evitar desbordamiento horizontal */
+    overflow-x: hidden;
 }
 
 /*================================ Header ========================================*/
@@ -110,7 +106,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1130px;
     min-height: 110px;
     margin: 0 auto;
     padding: 0 1rem;
